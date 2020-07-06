@@ -379,3 +379,211 @@ var finalValues = [
 ];
 console.log(finalValues);*/
 
+/*************************************
+ * Objects and Properties
+ */
+/*
+ // Object literal
+var jhon = {
+    firstName: 'Jhon',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'Teacher',
+    isMarried: false
+};
+
+console.log(jhon.firstName);
+console.log(jhon['lastName']);
+var x = 'birthYear';
+console.log(jhon[x]);
+jhon.job = 'Designer';
+jhon['isMarried'] = true;
+console.log(jhon);
+
+// new Object syntax
+var jane = new Object();
+jane.firstName = 'Jane';
+jane.birthYear = 1996;
+jane['lastName'] = 'Smith';
+console.log(jane);
+*/
+
+/***************************************
+ * Objects and methods
+ */
+/*
+ var jhon ={
+     firstName: 'Jhon',
+     lastName: 'Smith',
+     birthYear: 1992,
+     family: ['Jane', 'Mark', 'Bob', 'Emily'],
+     job: 'Teacher',
+     isMarried: false,
+     calcAge: function() {
+        //return 2020 - this.birthYear;
+        this.age = 2020 -this.birthYear;
+     }
+ };
+
+ //jhon.age = jhon.calcAge();
+ jhon.calcAge();
+ console.log(jhon);
+ */
+
+/*********************************************
+ * CODING CHALLENGE 4
+ */
+/*
+  var jhon = {
+      fullName: 'Jhon Smith',
+      mass: 89, //kg
+      height: 1.96, //meter
+      calcBmi: function() {
+          this.bmi = this.mass / (this.height * this.height);
+          return this.bmi;
+      }
+  };
+
+  var mark = {
+      fullName: 'Mark Smith',
+      mass: 78, //kg
+      height: 1.99, //meter
+      calcBmi: function() {
+          this.bmi = this.mass / (this.height * this.height);
+          return this.bmi
+      }
+  };
+  jhon.calcBmi();
+  mark.calcBmi();
+  console.log(jhon);
+  console.log(mark);
+
+  if (jhon.calcBmi() > mark.calcBmi()) {
+      console.log(jhon.fullName + ' ' + jhon.bmi);
+  } else if (jhon.calcBmi() < mark.calcBmi()) {
+    console.log(mark.fullName + ' ' + mark.bmi);
+  } else {
+      console.log(jhon.fullName + ' and ' + mark.fullName + ' has same BMI');
+  }
+*/
+
+/**************************************
+ * Loops and iteration
+ */
+/*
+ for (var i = 1; i <= 20; i += 2) {
+     console.log(i);
+ }
+
+ // i = 0, 0 < 10 true, log i to console, i++
+ // i = 1, 1 < 10 true, log i to console, i++
+ //.....
+ // i = 9, 9 < 10 true, log i to console, i++
+ // i = 10, 10 < 10 false, exit the loop!
+
+// For loop
+ var jhon = ['Jhon', 'Smith', 1990, 'designer', false, 'blue'];
+ for (var i = 0; i < jhon.length; i++) {
+     console.log(jhon[i]);
+ }
+
+ // While loop
+ var j = 0;
+ while (j < jhon.length) {
+     console.log(jhon[j]);
+     j++;
+ }
+
+ // continue and break statements
+ var jhon = ['Jhon', 'Smith', 1990, 'designer', false, 'blue'];
+ for (var i = 0; i < jhon.length; i++) {
+     if (typeof jhon[i] !== 'string') continue;
+     console.log(jhon[i]);
+ }
+
+ for (var i = 0; i < jhon.length; i++) {
+    if (typeof jhon[i] !== 'string') break;
+    console.log(jhon[i]);
+}
+
+// looping backwords
+for ( var i = jhon.length - 1; i >= 0; i--) {
+    console.log(jhon[i]);
+}
+*/
+
+/************************************
+ * CODING CHALLENGE 5
+ */
+
+ var jhonTiping = {
+     bill: [124, 48, 268, 180, 42],
+     tip: [],
+     amount: [],
+     calcTip: function() {
+         for (var i = 0; i < this.bill.length; i++) {
+            var percentage;
+            if (this.bill[i] < 50 ) {
+                percentage = 0.2;
+            } else if (this.bill[i] >= 50 && this.bill[i] <= 200) {
+                percentage = 0.15;
+            } else {
+                percentage = 0.1;
+            }
+            this.tip[i] = this.bill[i] * percentage;
+            this.amount[i] = this.bill[i] + this.tip[i];
+         }
+         
+     }
+ };
+
+ var markTiping = {
+    bill: [77, 375, 110, 45],
+    //tip: [],
+    //amount: [],
+    calcTip: function() {
+        this.tip = [];
+        this.amount = [];
+        for (var i = 0; i < this.bill.length; i++) {
+            
+           var percentage;
+           if (this.bill[i] < 100 ) {
+               percentage = 0.2;
+           } else if (this.bill[i] >= 100 && this.bill[i] <= 200) {
+               percentage = 0.1;
+           } else {
+               percentage = 0.25;
+           }
+           this.tip[i] = this.bill[i] * percentage;
+           this.amount[i] = this.bill[i] + this.tip[i];
+        }
+        
+    }
+};
+
+function calcTipAverage(array) {
+    var sum = 0;
+    for ( var i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+    return sum / array.length;
+}
+
+jhonTiping.calcTip();
+console.log(jhonTiping);
+
+markTiping.calcTip();
+console.log(markTiping);
+
+jhonTiping.average = calcTipAverage(jhonTiping.tip);
+markTiping.average = calcTipAverage(markTiping.tip);
+//console.log(jhonTiping.average, markTiping.average);
+if (jhonTiping.average > markTiping.average) {
+    console.log('Jhon\'s average is greater than Mark\'s and average is ' + jhonTiping.average);
+} else {
+    console.log('Mark\'s average is greater than Jhon\'s and average is ' + markTiping.average);
+}
+
+
+
