@@ -516,7 +516,7 @@ for ( var i = jhon.length - 1; i >= 0; i--) {
 /************************************
  * CODING CHALLENGE 5
  */
-
+/*
  var jhonTiping = {
      bill: [124, 48, 268, 180, 42],
      tip: [],
@@ -584,6 +584,6 @@ if (jhonTiping.average > markTiping.average) {
 } else {
     console.log('Mark\'s average is greater than Jhon\'s and average is ' + markTiping.average);
 }
-
+*/
 
 
